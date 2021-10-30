@@ -26,12 +26,26 @@ class HairColor(Enum):
 
 
 class Location(BaseModel):
-    city: str
-    state: str
-    country: str
+    city: str = Field(
+            ...,
+            min_length=1,
+            max_length=60
+            )
+    state: str = Field(
+            ...,
+            min_length=1,
+            max_length=50
+            )
+    country: str = Field(
+            ...,
+            min_length=1,
+            max_length=50
+            )
 
 
-class Person(BaseModel): 
+class Person(BaseModel):
+    # TODO: También es posible usar el parametro "example" en Field
+    # para pasar un caso de ejemplo y probar el endpoint
     first_name: str = Field(
             ...,
             min_length=1,
@@ -50,6 +64,19 @@ class Person(BaseModel):
     hair_color: Optional[HairColor] = Field(default=None) # Si nos pasan un valor dado que es opcional, esperamos un str
     is_married: Optional[bool] = Field(default=None) # Por defecto es un null que en python es un None
 
+    # TODO: Automatizar la prueba de los endpoints
+    # TODO: Debemos poner el primer valor igual a example
+    # ya que swaggerUI así lo requiere
+    class Config: 
+        schema_extra = {
+                "example": {
+                    "first_name": "Facundo",
+                    "last_name": "Garcia Martoni",
+                    "age": 21,
+                    "hair_color": "blonde",
+                    "is_married": False
+                }
+        }
 
 # Path Operations Decorator
 @app.get("/")
