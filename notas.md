@@ -25,4 +25,59 @@ FastAPI utiliza otros frameworks dentro de si para funcionar
   __comment was taken by Edkar Chachati - Platzi__
 
 
+# Inicializar la aplicación 
+
+> Ejecutar el comando: *uvicorn main:app --reload*
+
+Donde _main_ es el nombre del archivo y _app_ es el nombre de la variable que contiene nuestra aplicación 
+y _--reload_ Es un modificador que funciona como hot reloading, es decir, provocamos un efecto en la app y
+podemos ver los cambios que hemos hecho. 
+
+# Documentación interactiva de una API
+
+FastAPI también está parado sobre los hombros de OpenAPI, el cual es un conjunto de reglas que permite 
+trabajar con APIs. FastAPI funciona sobre un programa de Swagger el cual es Swagger UI, que permite
+mostrar la API documentada. 
+
+- Acceder a la documentación interactiva con Swagger UI: {localhost}/docs
+- Acceder a la documentación interactiva con Redoc: {localhost}/redoc
+
+__comment was taken by Pedro Alvarado García - Platzi__ 
+
+
+## OAS3 
+> Open API Specification
+Es la documentación que viene de base con FastAPI
+
+
+# Path Operations 
+
+## ¿Qué es un path?
+
+- Un path es lo mis que un route o endpoints y es todo aquello que vaya después de nuestro dominio 
+a la derecha del mismo. 
+
+## ¿Qué son las operations?
+
+- Un operations es exactamente lo mismo que un método http y tenemos las siguinetes más populates: 
+> - GET: Obtener
+> - POST: Crear
+> - PUT & Patch: Modificar-Actualizar
+> - DELETE: Eliminar
+y otros métoso como: OPTIONS, HEAD, PATCH...
+
+
+__comment was taken by Eduardo Enrique Morales Martinez - Platzi__
+
+## Otros métodos
+
+- Options: Devuelve un header adicional llamado allow que contiene los métodos http que pueden utilizarse
+en ese endpoint 
+- Head: Devuelve info sobre el documento, más no el documento en sí 
+- Patch: Hacer modificaciones parciales al documento **A diferencia de PUT que permiete cambiar el documento 
+entero**
+- Trace: Nos permite observar que esta pasando en la petición y nos devuelve nuestro input con propositos de debugging
+
+__comment was taken by Sebastián Andrade - Platzi__
+
 
