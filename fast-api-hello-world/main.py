@@ -1,8 +1,11 @@
 #Python
 from typing import Optional
+from enum import Enum # crear enumeraciones de str
 
 #Pydantic
 from pydantic import BaseModel
+from pydantic import Field
+
 
 #FastAPI
 from fastapi import FastAPI
@@ -14,6 +17,13 @@ from fastapi import Path
 app = FastAPI() # Esta variable va a contener a toda nuestra aplicación 
 
 # Models
+class HairColor(Enum):
+    white = "White"
+    brown = "Brown"
+    black = "Black"
+    blonde = "Blonde"
+    red = "Red"
+
 
 class Location(BaseModel):
     city: str
@@ -22,11 +32,23 @@ class Location(BaseModel):
 
 
 class Person(BaseModel): 
-    first_name: str
-    last_name: str
-    age: int
-    hair_color: Optional[str] = None # Si nos pasan un valor dado que es opcional, esperamos un str
-    is_married: Optional[bool] = None # Por defecto es un null que en python es un None
+    first_name: str = Field(
+            ...,
+            min_length=1,
+            max_length=50
+            )
+    last_name: str = Field(
+            ...,
+            min_length=1,
+            max_length=50
+            )
+    age: int = Field(
+            ...,
+            gt=0,
+            le=115,
+            )
+    hair_color: Optional[HairColor] = Field(default=None) # Si nos pasan un valor dado que es opcional, esperamos un str
+    is_married: Optional[bool] = Field(default=None) # Por defecto es un null que en python es un None
 
 
 # Path Operations Decorator

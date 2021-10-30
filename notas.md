@@ -365,4 +365,29 @@ con el siguien mensaje:
 
 __comment was taken by Edkar Chachati - Platzi__
 
+# Tipos de Datos Especiales
+
+**Clásicos**
+
+- str
+- int
+- float 
+- bool
+
+**Exóticos**
+
+- Enum
+- HttpUrl: Valida que lo que se recibe es una url 
+- FilePath: Valida que lo que se recibe es un path para un archivo
+- DirectoryPath: Valida que lo que se recibe es un path para un directorio
+- EmailStr: Valida que lo que se recibe es un email
+- PaymentCardNumber: Valida que lo que se recibe es una tarjeta
+- IPvAnyAdress: Valida que lo que se recibe es una IP 
+- NegativeFloat: Valida que lo que se recibe es un flotante negativo
+- PositiveFloat: Valida que lo que se recibe es un flotante positivo  
+- NegativeInt: Valida que lo que se recibe es un entero negativo 
+- PositiveInt: Valida que lo que se recibe es un entero positivo
+
+> Más tipos de datos: https://pydantic-docs.helpmanual.io/usage/types/#pydantic-types
+
 
