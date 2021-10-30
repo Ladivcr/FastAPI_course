@@ -282,4 +282,87 @@ Query(None, title="ID del usuario", description="El ID se consigue entrando a la
 
 __comment was taken by Javier Almarza Bucarey - Platzi__
 
+# Validaciones: Models
+
+**Diferencia Path, Query Parameters and Request Body**
+
+- Usamos Path Parameters cuando por ejemplo se trata de un id y esas cosas, como variables etc.
+- Usamos Requests Body para enviar información que tiene formato de un modelo
+- Usamos Query Parameters para solicitar información opcional del servidor
+
+Para validar modelos tomamos uso de las clases de Pydantic Field que funiona igual a las validaciones
+que ya hemos hecho con Path, Query y Body
+
+```
+from pydantic import BaseModel, Field
+
+class Person(BaseModel):
+    first_name: str = Field(
+        ...,
+        min_length=1,
+        max_length=50,
+    )
+    last_name: str = Field(
+        ...,
+        min_length=1,
+        max_length=50,
+    )
+    age: int = Field(
+        ...,
+        gt=0,
+        le=110
+    )
+    hair_color: Optional[HairColor] = Field(default=None)
+    is_married: Optional[bool] = Field(default=None)
+
+```
+
+Puedes ver que hair_color ya tiene un tipo distinto a String, esto lo hacemos para validar
+que tenga un campo permitido haciendo otra clase usando Enum
+
+
+```
+from enum import Enum
+
+class HairColor(Enum):
+    white: str = 'white'
+    black: str = 'black'
+    brown: str = 'brown'
+    red: str = 'red'
+    blonde: str = 'blonde'
+    tinted: str = 'tinted'
+```
+
+Aquí tenemos enumerados algunos colores de pelo y ahora cada vez que alguien trate de ingresar
+un valor que no se encuentra en nuestra clase que hereda de Enum, le arrojará un error 422 Unprocessable Entity 
+con el siguien mensaje: 
+
+```
+{
+  "detail": [
+    {
+      "loc": [
+        "body",
+        "person",
+        "hair_color"
+      ],
+      "msg": "value is not a valid enumeration member; permitted: 'white', 'black', 'brown', 'red', 'blonde', 'tinted'",
+      "type": "type_error.enum",
+      "ctx": {
+        "enum_values": [
+          "white",
+          "black",
+          "brown",
+          "red",
+          "blonde",
+          "tinted"
+        ]
+      }
+    }
+  ]
+}
+```
+
+__comment was taken by Edkar Chachati - Platzi__
+
 
