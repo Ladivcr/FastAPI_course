@@ -7,7 +7,7 @@ from pydantic import BaseModel
 #FastAPI
 from fastapi import FastAPI
 from fastapi import Body
-
+from fastapi import Query
 # Instancia de FASTAPI
 app = FastAPI() # Esta variable va a contener a toda nuestra aplicación 
 
@@ -30,3 +30,11 @@ def home():
 @app.post("/person/new")
 def create_person(person: Person = Body(...)): # El triple punto indica que es obligatorio
    return Person
+
+# Validaciones: Query Parameters
+@app.get("/person/detail")
+def show_person(
+        name: Optional[str] = Query(None, min_length=1, max_length=50),
+        age: int = Query(...) # Query parameter obligatorio
+        ):
+    return {name: age}

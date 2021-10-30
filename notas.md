@@ -241,7 +241,45 @@ def mostrar_usuario(
    return {nombre: edad};
 ```
 
-__comment was taken by Javier Almarza Bucarey - Platzi
+__comment was taken by Javier Almarza Bucarey - Platzi__
+
+# Más sobre validaciones
+
+Para especificar las validaciones, debemos pasarle como parámetros a la función **Query** lo que necesitamos validar. 
+
+- Para tipos de datos **str:**
+
+> - max_length: Para especificar el tamaño máximo de la cadena
+> - min_length: Para especificar el tamaño minimo de la cadena
+> - regex: Para especificar expresiones regulares
+
+- Para tipos de datos **int:**
+> - ge: (greater or equal than >=) Para especificar que el valor debe ser mayor o igual 
+> - le: (less or equal than <=) Para especificar que el valor debe ser menor o igual 
+> - gt: (greater than >) Para especificar que el valor debe ser mayor
+> - lt: (less than <) Para especificar que el valor debe ser menor 
+
+**EJ**
+
+```
+# Validaciones de un nombre de usuario 
+Query(None, min_length=1, max_length=50)):
+```
+
+Es posible dotar de mayor contexto a nuestra documentación. Se deben usar los parámetros **title**
+y **description**.
+
+- title: Para definir un titulo al parámetro
+- description: Para especificar una descripción al parámetro
+
+**EJ**
+
+```
+# Validaciones para un identificador
+Query(None, title="ID del usuario", description="El ID se consigue entrando a las configuraciones del perfil");
+
+```
+
+__comment was taken by Javier Almarza Bucarey - Platzi__
 
 
-__
