@@ -1,2 +1,6 @@
 fast-api-hello-world/.fapi
+<<<<<<< HEAD
 .Fapi/
+=======
+.Fapi
+>>>>>>> automatic_path_and_query_examples
