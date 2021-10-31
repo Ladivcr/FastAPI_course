@@ -1,3 +1,17 @@
+¿qué es un servidor? -> Ambas opciones son correctas
+starlette -> Es un framework de desarrollo web pero de bajo nivel, python toma a starlette y le agrega funcionalidades. FastAPI es un 
+starlette con esteroides
+
+¿qué es openapi? -> Es una especificación, un conjunto de reglas 
+que permite definir algo. Permite definir como crear, como visualizar,
+APIS. Es un conjunto de reglas que me permiten decir si una API esta ien o no. 
+
+Swagger, SwaggerUX y REDOC son apoyos para openapi para ver
+la api 
+
+¿Con cuál de las siguientes operations no deberías enviar jamás un request body?
+-> DELETE NO ES 
+
 # ¿Qué es FastAPI?
 
 - El framework mas veloz para el desarrollo web con Python. 
